@@ -2,7 +2,6 @@ package com.yql.framework.schedule.service;
 
 import com.yql.framework.schedule.domain.TaskInfo;
 import com.yql.framework.schedule.dto.TaskInfoDto;
-import com.yql.framework.schedule.support.Pagination;
 
 import java.util.List;
 
@@ -10,17 +9,17 @@ import java.util.List;
  * @author wangxiaohong
  */
 public interface ITaskEntityService {
-    List<TaskInfoDto> findList(Pagination<TaskInfoDto> param);
+    List<TaskInfoDto> findList();
 
     void create(TaskInfo taskInfo);
 
-    TaskInfo findById(String taskId);
+    TaskInfo findById(int taskId);
 
-    void startup(String id);
+    void startup(int id);
 
-    void pause(String id);
+    void pause(int id);
 
-    void delete(String id);
+    void delete(int id);
 
     void update(TaskInfo taskInfo);
 }

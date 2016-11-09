@@ -8,12 +8,13 @@ import java.util.Map;
 
 /**
  * 调度失败 计数器
- *  @author wangxiaohong
+ *
+ * @author wangxiaohong
  */
 public class TaskExecuteFailureCounter {
-    private Map<String, DefaultCounter> taskCounterMap = new HashMap<String, DefaultCounter>();
+    private Map<Integer, DefaultCounter> taskCounterMap = new HashMap<>();
 
-    public void increment(String taskId) {
+    public void increment(int taskId) {
         if (taskCounterMap.get(taskId) == null) {
             reset(taskId);
         } else {
@@ -22,16 +23,17 @@ public class TaskExecuteFailureCounter {
         }
 
     }
-    public boolean exist(String taskId){
-        return  null!=taskCounterMap.get(taskId);
+
+    public boolean exist(int taskId) {
+        return null != taskCounterMap.get(taskId);
     }
 
-    public long getIncrement(String taskId) {
+    public long getIncrement(int taskId) {
         Counter counter = taskCounterMap.get(taskId);
         return counter.increment();
     }
 
-    public void reset(String taskId) {
+    public void reset(int taskId) {
         taskCounterMap.put(taskId, new DefaultCounter());
     }
 }

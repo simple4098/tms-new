@@ -10,13 +10,13 @@ import java.util.Date;
  */
 public class TaskInfo {
     //id
-    private String id;
+    private int id;
 
     //创建时间
     private Date dateCreated = new Date();
     //最后更新
     private Date lastUpdated = new Date();
-    private int version;
+
     //是否删除
     private boolean deleted = false;
     //任务名称
@@ -107,11 +107,11 @@ public class TaskInfo {
         return MessageSource.lan(EnumUtils.getFullName(status));
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -129,14 +129,6 @@ public class TaskInfo {
 
     public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
-    }
-
-    public int getVersion() {
-        return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
     }
 
     public boolean isDeleted() {

@@ -2,8 +2,8 @@ package com.yql.framework.schedule.web;
 
 
 import com.alibaba.fastjson.JSONArray;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,7 +18,7 @@ import java.io.IOException;
  */
 public class TaskExceptionResolver implements HandlerExceptionResolver {
     public static final String DEFAULT_CONTENT_TYPE = "application/json";
-    private Logger logger = LogManager.getLogger(TaskExceptionResolver.class);
+    private Logger logger = LoggerFactory.getLogger(TaskExceptionResolver.class);
 
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {

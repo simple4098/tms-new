@@ -7,6 +7,7 @@ import org.quartz.JobKey;
 import org.quartz.Trigger;
 import org.quartz.impl.JobDetailImpl;
 import org.quartz.impl.triggers.CronTriggerImpl;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import java.text.ParseException;
@@ -15,6 +16,7 @@ import java.text.ParseException;
 /**
  * @author wangxiaohong
  */
+@Component
 public class TaskJobGroupFactory implements ITaskJobGroupFactory {
 
     static final String metaTaskIdKey = "taskId";

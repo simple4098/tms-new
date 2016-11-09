@@ -1,13 +1,14 @@
 package com.yql.framework.schedule.web.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.yql.framework.schedule.domain.TaskInfo;
 import com.yql.framework.schedule.dto.TaskInfoDto;
 import com.yql.framework.schedule.service.ITaskEntityService;
-import com.yql.framework.schedule.support.Pagination;
 import com.yql.framework.schedule.web.ExtMessage;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -19,7 +20,7 @@ import static com.yql.framework.schedule.web.ExtMessageBuilder.createResults;
  *
  * @author wangxiaohong
  */
-@Controller
+@RestController
 @RequestMapping("/task")
 public class TaskController {
 
@@ -32,9 +33,10 @@ public class TaskController {
      */
     @RequestMapping("/list")
     public ExtMessage showTaskList(Integer page, Integer limit) {
-        Pagination<TaskInfoDto> pagination = new Pagination<TaskInfoDto>(limit, page);
-        ExtMessage extMessage = createResults(taskService.findList(pagination));
-        extMessage.setTotalCount(pagination.getTotalCount());
+        PageHelper.startPage(page, limit);
+        PageInfo<TaskInfoDto> pageInfo = new PageInfo<>(taskService.findList());
+        ExtMessage extMessage = createResults(pageInfo.getList());
+        extMessage.setTotalCount(pageInfo.getTotal());
         return extMessage;
     }
 
@@ -68,7 +70,7 @@ public class TaskController {
      * @param id 任务ID
      */
     @RequestMapping("/startup")
-    public ExtMessage startup(String id) {
+    public ExtMessage startup(int id) {
         taskService.startup(id);
         return createMessage("启动成功");
     }
@@ -79,7 +81,7 @@ public class TaskController {
      * @param id 任务ID
      */
     @RequestMapping("/pause")
-    public ExtMessage pause(String id) {
+    public ExtMessage pause(int id) {
         taskService.pause(id);
         return createMessage("暂停成功");
     }
@@ -90,7 +92,7 @@ public class TaskController {
      * @param id 任务ID
      */
     @RequestMapping("/delete")
-    public ExtMessage delete(String id) {
+    public ExtMessage delete(int id) {
         taskService.delete(id);
         return createMessage("删除成功");
     }

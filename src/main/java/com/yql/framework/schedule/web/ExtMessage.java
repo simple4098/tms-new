@@ -9,15 +9,15 @@ import java.util.List;
  */
 public class ExtMessage {
     private String msg;
-    private Boolean success = true;
+    private boolean success = true;
     private List results;
-    private int totalCount;
+    private long totalCount;
 
-    public int getTotalCount() {
+    public long getTotalCount() {
         return totalCount;
     }
 
-    public void setTotalCount(int totalCount) {
+    public void setTotalCount(long totalCount) {
         this.totalCount = totalCount;
     }
 
@@ -29,11 +29,11 @@ public class ExtMessage {
         this.results = results;
     }
 
-    public Boolean getSuccess() {
+    public boolean isSuccess() {
         return success;
     }
 
-    public void setSuccess(Boolean success) {
+    public void setSuccess(boolean success) {
         this.success = success;
     }
 

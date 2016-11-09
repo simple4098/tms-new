@@ -1,10 +1,9 @@
 package com.yql.framework.schedule.service.impl;
 
-import com.yql.framework.schedule.dao.ITaskEntityDao;
+import com.yql.framework.schedule.dao.TaskMapper;
 import com.yql.framework.schedule.domain.TaskInfo;
 import com.yql.framework.schedule.dto.TaskInfoDto;
 import com.yql.framework.schedule.service.ITaskEntityService;
-import com.yql.framework.schedule.support.Pagination;
 import com.yql.framework.schedule.support.task.ITaskEntityManager;
 import com.yql.framework.schedule.support.task.TaskInfoChecker;
 import org.quartz.CronExpression;
@@ -20,7 +19,7 @@ import java.util.List;
 @Service
 public class TaskEntityService implements ITaskEntityService {
     @Resource
-    private ITaskEntityDao taskEntityDao;
+    private TaskMapper taskEntityDao;
     @Resource
     private ITaskEntityManager taskEntityManager;
 
@@ -29,8 +28,8 @@ public class TaskEntityService implements ITaskEntityService {
 
 
     @Override
-    public List<TaskInfoDto> findList(Pagination<TaskInfoDto> param) {
-        return taskEntityDao.findList(param);
+    public List<TaskInfoDto> findList() {
+        return taskEntityDao.findList();
     }
 
     @Override
@@ -40,12 +39,12 @@ public class TaskEntityService implements ITaskEntityService {
     }
 
     @Override
-    public TaskInfo findById(String taskId) {
+    public TaskInfo findById(int taskId) {
         return taskEntityDao.findById(taskId);
     }
 
     @Override
-    public void startup(String id) {
+    public void startup(int id) {
         TaskInfo taskInfo = findById(id);
         taskInfoChecker.checkBeforeStart(taskInfo);
         taskEntityManager.startup(taskInfo);
@@ -53,14 +52,13 @@ public class TaskEntityService implements ITaskEntityService {
     }
 
     @Override
-    public void pause(String id) {
+    public void pause(int id) {
         TaskInfo taskInfo = findById(id);
         taskEntityManager.pause(taskInfo);
-
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(int id) {
         TaskInfo taskInfo = findById(id);
         taskInfoChecker.checkBeforeDelete(taskInfo);
         taskEntityManager.delete(taskInfo);

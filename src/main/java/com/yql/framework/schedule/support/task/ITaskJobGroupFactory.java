@@ -9,5 +9,5 @@ import com.yql.framework.schedule.domain.TaskInfo;
  * Time: 上午10:14
  */
 public interface ITaskJobGroupFactory {
-    public JobGroup getJobGroup(TaskInfo taskInfo);
+    JobGroup getJobGroup(TaskInfo taskInfo);
 }

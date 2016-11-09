@@ -1,0 +1,43 @@
+server:
+  tomcat:
+    accesslog:
+      enabled: false
+    max-threads: 800
+    min-spare-threads: 10
+    uri-encoding: UTF-8
+
+logging:
+  level:
+    org.springframework: ERROR
+    org.apache.catalina: ERROR
+    com.yql.framework: DEBUG
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.0.35:3306/tms?useUnicode=true&characterEncoding=utf-8&useSSL=false&zeroDateTimeBehavior=convertToNull&useNewIO=true&autoReconnectForPools=true
+    username: root
+    password: nidaye
+    driverClassName: com.mysql.jdbc.Driver
+    initialSize: 5
+    minIdle: 5
+    maxActive: 50
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testOnBorrow: true
+    testWhileIdle: true
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+mybatis:
+  configuration:
+    autoMappingBehavior: FULL
+    mapUnderscoreToCamelCase: true

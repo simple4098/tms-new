@@ -7,17 +7,19 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 /**
  * Http 方法 远程 访问
  * @author wangxiaohong
  */
+@Component
 public class HttpTaskJobHandler implements TaskJobHandler {
-    private static Logger logger = LogManager.getLogger(HttpTaskJobHandler.class);
+    private static Logger logger = LoggerFactory.getLogger(HttpTaskJobHandler.class);
 
     @Override
     public boolean supports(TaskJobContext meta) {

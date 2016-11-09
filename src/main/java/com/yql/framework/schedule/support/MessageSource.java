@@ -16,6 +16,5 @@ public class MessageSource extends ReloadableResourceBundleMessageSource {
 
     public static String lan(String str) {
         return ms.getMessage(str, null, Locale.getDefault());
-
     }
 }

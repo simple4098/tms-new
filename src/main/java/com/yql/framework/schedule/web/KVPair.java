@@ -6,11 +6,11 @@ import java.io.Serializable;
  * 字段，通常用于JSON返回 封装简单的Kv 对象
  * @author wangxiaohong
  */
-public class Field implements Serializable {
+public class KVPair implements Serializable {
     private String name;
     private String value;
 
-    public Field(String name, String value) {
+    public KVPair(String name, String value) {
         this.name = name;
         this.value = value;
     }

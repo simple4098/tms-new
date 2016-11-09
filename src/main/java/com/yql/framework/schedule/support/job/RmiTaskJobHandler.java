@@ -3,9 +3,10 @@ package com.yql.framework.schedule.support.job;
 import com.yql.framework.api.job.ITask;
 import com.yql.framework.schedule.domain.JobType;
 import com.yql.framework.schedule.support.task.TaskJobContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.quartz.JobExecutionContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.rmi.Naming;
 
@@ -14,8 +15,9 @@ import java.rmi.Naming;
  *
  * @author wangxiaohong
  */
+@Component
 public class RmiTaskJobHandler implements TaskJobHandler {
-    private static Logger logger = LogManager.getLogger(RmiTaskJobHandler.class);
+    private static Logger logger = LoggerFactory.getLogger(RmiTaskJobHandler.class);
 
     @Override
     public boolean supports(TaskJobContext meta) {

@@ -3,12 +3,13 @@ package com.yql.framework.schedule.web.controller;
 import com.yql.framework.schedule.domain.JobType;
 import com.yql.framework.schedule.web.ExtMessage;
 import com.yql.framework.schedule.web.FieldUtils;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import static com.yql.framework.schedule.web.ExtMessageBuilder.createResults;
@@ -18,18 +19,19 @@ import static com.yql.framework.schedule.web.ExtMessageBuilder.createResults;
  *
  * @author wangxiaohong
  */
-@Controller
+@RestController
 public class ConfigController {
 
     /**
      * 系统运行时 软件配置
      */
     @RequestMapping("/environment/init")
-    public Model model(Model model, HttpServletRequest request) {
-        model.addAttribute("contextPath", request.getContextPath());
-        model.addAttribute("js", new ArrayList<String>());
-        model.addAttribute("css", new ArrayList<String>());
-        model.addAttribute("id", UUID.randomUUID().toString());
+    public Map model(HttpServletRequest request) {
+        Map model = new HashMap();
+        model.put("contextPath", request.getContextPath());
+        model.put("js", new ArrayList<String>());
+        model.put("css", new ArrayList<String>());
+        model.put("id", UUID.randomUUID().toString());
         return model;
     }
 

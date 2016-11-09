@@ -3,27 +3,22 @@ package com.yql.framework.schedule.support.task;
 import com.yql.framework.schedule.domain.TaskInfo;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
 /**
  * @author wangxiaohong
  */
+@Component
 public class TaskEntityManager implements ITaskEntityManager {
 
     @Resource
     private Scheduler scheduler;
 
     @Resource
-    private TaskInfoChecker taskInfoChecker;
-
-    @Resource
     private ITaskJobGroupFactory jobGroupFactory;
 
-
-    public void setScheduler(Scheduler scheduler) {
-        this.scheduler = scheduler;
-    }
 
     @Override
     public void startup() throws SchedulerException {

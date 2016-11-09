@@ -6,12 +6,14 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 
 /**
  * 容器 启动 监听 , 目前主要的功能是启动 调度器
  *
  * @author wangxiaohong
  */
+@WebListener
 public class BootstrapListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {

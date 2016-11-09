@@ -8,16 +8,16 @@ import com.yql.framework.schedule.domain.JobType;
  * @author wangxiaohong
  */
 public class TaskJobContext {
-    private String taskId;
+    private int taskId;
     private String uri;
     private JobType type;
 
 
-    public String getTaskId() {
+    public int getTaskId() {
         return taskId;
     }
 
-    public void setTaskId(String taskId) {
+    public void setTaskId(int taskId) {
         this.taskId = taskId;
     }
 

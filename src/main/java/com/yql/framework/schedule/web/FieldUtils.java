@@ -19,7 +19,7 @@ public abstract class FieldUtils {
      *
      * @param enums 待转化的枚举对象
      */
-    public static List<Field> convertToList(Enum[] enums) {
-        return Arrays.asList(enums).stream().map(e -> new Field(MessageSource.lan(EnumUtils.getFullName(e)), e.name())).collect(Collectors.toList());
+    public static List<KVPair> convertToList(Enum[] enums) {
+        return Arrays.stream(enums).map(e -> new KVPair(MessageSource.lan(EnumUtils.getFullName(e)), e.name())).collect(Collectors.toList());
     }
 }
