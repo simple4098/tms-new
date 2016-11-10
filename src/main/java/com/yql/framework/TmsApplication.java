@@ -7,9 +7,6 @@ import org.springframework.context.annotation.AdviceMode;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-//@EnableDiscoveryClient
-//@EnableFeignClients
-//@EnableCircuitBreaker
 @EnableTransactionManagement(proxyTargetClass = true, mode = AdviceMode.ASPECTJ)
 @ServletComponentScan
 public class TmsApplication {
