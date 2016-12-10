@@ -10,7 +10,7 @@ import java.util.Date;
  */
 public class TaskInfo {
     //id
-    private int id;
+    private Integer id;
 
     //创建时间
     private Date dateCreated = new Date();
@@ -107,11 +107,11 @@ public class TaskInfo {
         return MessageSource.lan(EnumUtils.getFullName(status));
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

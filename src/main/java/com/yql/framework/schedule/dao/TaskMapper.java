@@ -25,8 +25,8 @@ public interface TaskMapper {
     })
     List<TaskInfoDto> findList();
 
-    @Insert("INSERT INTO task_info (id,task_name,cron_expression,task_description,author,task_type,uri,app,deleted)" +
-            "        VALUES (#{id},#{name},#{cron},#{description},#{author},#{type},#{uri},#{app},#{deleted})")
+    @Insert("INSERT INTO task_info (task_name,cron_expression,task_description,author,task_type,uri,app,deleted)" +
+            "        VALUES (#{name},#{cron},#{description},#{author},#{type},#{uri},#{app},#{deleted})")
     void create(TaskInfo taskInfo);
 
     @Select("SELECT t.*,qt.TRIGGER_STATE AS status FROM  task_info t " +
