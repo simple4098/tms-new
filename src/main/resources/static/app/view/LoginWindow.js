@@ -9,7 +9,7 @@ Ext.define('FQServiceApp.view.LoginWindow', {
     height: 160,
     width: 400,
     closable:false,
-    title: '登录FQ应用管理平台',
+    title: '登录调度管理平台',
     initComponent: function() {
         var me = this;
         Ext.applyIf(me, {
